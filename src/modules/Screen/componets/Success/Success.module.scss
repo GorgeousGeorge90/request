@@ -1,0 +1,19 @@
+
+
+.success_container {
+  @apply base_container;
+
+  .success_content {
+    @apply base_container
+
+    .success_title {
+      @apply uppercase;
+    }
+
+    .success_title + p {
+      ::first-letter {
+        @apply uppercase;
+      }
+    }
+  }
+}

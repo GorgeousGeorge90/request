@@ -1,0 +1,14 @@
+
+
+.table_container {
+  @apply base_container;
+
+  .table_content {
+    @apply base_container flex-col;
+
+    .table_title {
+      @apply rounded-md p-2;
+      border: 1px solid red;
+    }
+  }
+}

@@ -1,1 +1,1 @@
-export * from './Table.module.scss'
+export * from './Table'

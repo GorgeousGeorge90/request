@@ -6,5 +6,5 @@ const Screen = () => {
 
     return (<section>
 
-        </section>)
+    </section>)
 }
