@@ -1,0 +1,12 @@
+
+
+.screen_container {
+  @apply base_container h-screen;
+  background-color: #86D3F4;
+  width: 380px;
+
+  .screen_content {
+    @apply base_container;
+    width: 272px;
+  }
+}

@@ -9,11 +9,5 @@
     .success_title {
       @apply uppercase;
     }
-
-    .success_title + p {
-      ::first-letter {
-        @apply uppercase;
-      }
-    }
   }
 }
