@@ -11,9 +11,55 @@
     }
 
     .screen_sidebar {
-      @apply base_container h-full z-10;
+      @apply base_container h-full z-10 opacity-0;
       background-color: #86D3F4;
       width: 380px;
+      animation: 0.5s show_two ease-in 0.5s;
+      animation-fill-mode: forwards;
     }
+
+    .screen_btn {
+      @apply base_container bg-white uppercase text-xl
+      z-10 absolute top-5 right-5 opacity-0;
+      border: 2px solid #000;
+      width: 88px;
+      height: 52px;
+      animation: 0.5s show_one linear 1s;
+      animation-fill-mode: forwards;
+    }
+
+    .screen_code {
+      @apply base_container flex-row-reverse text-white
+      z-10 absolute bottom-5 right-5 opacity-0 uppercase gap-2;
+      animation: 0.5s show_one linear 1.5s;
+      animation-fill-mode: forwards;
+
+      .screen_code_text {
+        text-align: end;
+        width: 180px;
+      }
+
+
+    }
+  }
+}
+
+@keyframes show_one {
+  0% {
+    transform: translateX(150px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes show_two {
+  0% {
+    transform: translateX(-150px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
   }
 }

@@ -1,0 +1,25 @@
+
+
+.success_screen_container {
+  @apply base_container;
+  width: 284px;
+  animation: 0.5s get linear;
+
+  .success_screen_content {
+    @apply base_container flex-col gap-2;
+    text-align: center;
+
+    .success_screen_title {
+      @apply text-2xl uppercase font-bold;
+    }
+
+    p {
+      line-height: 14px;
+    }
+  }
+}
+
+@keyframes get {
+  0% { transform: scale(0) }
+  100% { transform: scale(1) }
+}

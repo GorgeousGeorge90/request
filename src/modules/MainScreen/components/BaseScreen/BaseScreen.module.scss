@@ -1,0 +1,92 @@
+
+
+.base_screen_container {
+  @apply base_container;
+
+  .base_content {
+    @apply base_container flex-col gap-2;
+    width: 284px;
+
+    .base_title {
+      @apply flex px-6 w-full text-center text-xl;
+    }
+
+    .base_phone {
+      @apply flex px-6 w-full justify-center;
+      font-size: 25px;
+    }
+
+    .base_text {
+      @apply text-center text-sm;
+
+      span {
+        @apply capitalize;
+      }
+    }
+
+    .base_main {
+      @apply grid grid-rows-4 grid-cols-3 gap-2.5
+      w-full text-black py-4 text-xl;
+      height: 278px;
+
+      .base_main_item {
+        @apply base_container uppercase;
+        border:2px solid #000;
+
+        &:hover {
+          @apply bg-black text-neutral-100;
+        }
+      }
+    }
+
+    .base_error {
+      @apply base_container text-red-600 uppercase;
+      height: 52px;
+      animation: 0.5s get_error ease-in-out;
+    }
+
+    .base_check {
+      @apply base_container flex-row-reverse px-3;
+      height: 52px;
+      width: 284px;
+
+
+      .base_check_input {
+        @apply  appearance-none h-10  base_container border-2 border-black
+        checked:after:content-['✓'] checked:after:scale-150;
+        min-width: 40px;
+      }
+
+      .base_check_label {
+        @apply base_container text-black text-center text-sm;
+        color:#565656;
+
+        &:hover {
+          @apply text-base cursor-pointer transition-all text-black font-semibold;
+        }
+      }
+      //['✓']
+    }
+
+    .base_final {
+      @apply base_container uppercase w-full text-white bg-black
+        active:bg-none;
+      height: 52px;
+
+      :disabled {
+        color:#4E4E4E;
+        border: 1px solid #4E4E4E;
+      }
+    }
+
+    button[aria-label='стереть'] {
+      @apply col-span-2 text-base;
+    }
+  }
+}
+
+@keyframes get_error {
+  0% { opacity: 0; transform: translateX(-150px) }
+  50% { opacity: 1; transform: translateX(50px) }
+  100% { transform: translateX(0) }
+}

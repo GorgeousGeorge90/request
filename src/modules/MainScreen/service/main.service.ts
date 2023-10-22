@@ -13,7 +13,7 @@ class MainService {
                 redirect: 'follow',
                 headers: this.myHeaders
             })
-            return response.text()
+            return response.json()
         } catch (error) {
             return error
         }
