@@ -1,7 +1,7 @@
 import { create } from 'zustand';
 import { immer } from 'zustand/middleware/immer'
-import MainService from "../service/main.service";
-import {devtools} from "zustand/middleware";
+import MainService from '../service/main.service';
+import { devtools } from 'zustand/middleware';
 import { PhoneStateType,PhoneActionsType } from '../models';
 
 const indexes:number[] = [6,10,13]
@@ -31,8 +31,10 @@ export const usePhoneStore = create(devtools(immer<PhoneStateType & PhoneActions
         if (indexes.includes(state.currentIndex - 1)) {
             state.currentIndex--;
         }
-        state.phone[state.currentIndex - 1] = '_'
-        state.currentIndex--;
+        if (state.currentIndex > 3) {
+            state.phone[state.currentIndex - 1] = '_'
+            state.currentIndex--;
+        }
     }),
 
     setIsFinished: () => set(state => {
@@ -68,7 +70,18 @@ export const usePhoneStore = create(devtools(immer<PhoneStateType & PhoneActions
             get().setIsFinished()
         } else {
             get().setError()
+            get().setIsApproved()
             get().setIsLoading('rejected')
         }
-    }
+    },
+
+    clearState: () => set(state => {
+        state.phone = '+7(___)___-__-__'.split('')
+        state.currentIndex = 3
+        state.isApproved = false
+        state.isFinished = false
+        state.isLoading = 'idle'
+        state.error = null
+    })
+
 }))))

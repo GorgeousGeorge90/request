@@ -1,35 +1,37 @@
 import styles from './StartScreen.module.scss';
 import ReactPlayer from 'react-player/youtube'
 import index from './../../assets/img/index.png';
-import {FC, useEffect, useState} from 'react';
+import { FC, useRef } from 'react';
+import { useKeyPress } from "../../hooks/useKeyDownPress";
+import YouTubePlayer from "react-player/youtube";
 
 type StartScreenProps = {
+    start:number,
     open:()=>void;
 }
 
-export const StartScreen:FC<StartScreenProps> = ({open}) => {
-    const [ clip,setClip ] = useState<boolean>(false)
-    useEffect(()=> {
+export const StartScreen:FC<StartScreenProps> = ({open, start}:StartScreenProps) => {
+    const ref = useRef<YouTubePlayer | null>(null)
 
-    })
+    const handleClick = () => {
+        const time = ref.current?.getCurrentTime()
+        localStorage.setItem('time',JSON.stringify(time))
+        open()
+    }
 
-    return <section
-        className={styles.start_container}>
+    useKeyPress(handleClick,'Enter')
+
+    return <section className={styles.start_container}>
         <div className={styles.start_content}>
-            {/*<ReactPlayer className={styles.start_video}*/}
-            {/*             url='https://www.youtube.com/watch?v=M7FIvfx5J10'*/}
-            {/*             width={'100%'} height={'100%'}*/}
-            {/*             muted={true}*/}
-            {/*             playing={true}*/}
-            {/*             loop={true}*/}
-            {/*             data-video={'video'}*/}
-            {/*/>*/}
-            <iframe className={styles.start_video}
-                    width="100%" height="100%"
-                    src="https://www.youtube.com/embed/M7FIvfx5J10?si=_DJ9bJ1D8o7hiYDY&amp;controls=0"
-                    title="YouTube video player" frameBorder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    allowFullScreen/>
+            <ReactPlayer className={styles.start_video}
+                         url={`https://www.youtube.com/watch?v=M7FIvfx5J10&start=${start}`}
+                         width={'100%'} height={'100%'}
+                         muted={true}
+                         playing={true}
+                         loop={true}
+                         data-id={'video'}
+                         ref={ref}
+            />
             <div className={styles.start_banner}>
                 <h3 className={styles.start_banner_title}>
                     <span>исполните мечту вашего</span>
@@ -43,7 +45,7 @@ export const StartScreen:FC<StartScreenProps> = ({open}) => {
                     </figcaption>
                 </figure>
                 <button className={styles.start_banner_btn}
-                        onClick={open}
+                        onClick={handleClick}
                         type={'button'}
                         aria-label={'переход'}>
                     ок

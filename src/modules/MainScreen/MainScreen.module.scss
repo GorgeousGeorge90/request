@@ -7,12 +7,11 @@
     @apply flex w-full;
 
     .screen_overlay {
-      @apply absolute top-0 left-0;
+      @apply absolute top-0 left-0 h-full w-full;
     }
 
     .screen_sidebar {
-      @apply base_container h-full z-10 opacity-0;
-      background-color: #86D3F4;
+      @apply base_container h-full z-10 opacity-0 bg-[#86D3F4];
       width: 380px;
       animation: 0.5s show_two ease-in 0.5s;
       animation-fill-mode: forwards;
@@ -20,12 +19,15 @@
 
     .screen_btn {
       @apply base_container bg-white uppercase text-xl
-      z-10 absolute top-5 right-5 opacity-0;
-      border: 2px solid #000;
+      z-10 absolute top-5 right-5 opacity-0 border-black border-2;
       width: 88px;
       height: 52px;
       animation: 0.5s show_one linear 1s;
       animation-fill-mode: forwards;
+
+      &:hover {
+        @apply bg-black text-white;
+      }
     }
 
     .screen_code {
@@ -38,8 +40,11 @@
         text-align: end;
         width: 180px;
       }
+    }
 
-
+    button[aria-label='try again'] {
+      @apply text-base font-semibold;
+      width: 120px;
     }
   }
 }

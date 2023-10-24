@@ -23,5 +23,6 @@ export type PhoneActionsType = {
     clearError:() => void,
     setIsLoading:(value:PhoneStateType["isLoading"]) => void,
     getValidate:(value:number) => void,
+    clearState:() => void,
 }
 
