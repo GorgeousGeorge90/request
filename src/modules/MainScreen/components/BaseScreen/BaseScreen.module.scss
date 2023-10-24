@@ -62,7 +62,8 @@
       }
 
       .base_check_label {
-        @apply base_container text-black text-center text-sm text-[#565656];
+        @apply base_container text-black text-center text-sm;
+        color:#565656;
 
         &:hover {
           @apply text-base cursor-pointer transition-all text-black font-semibold;
@@ -72,12 +73,9 @@
 
     .base_final {
       @apply base_container uppercase w-full text-white bg-black
-      disabled:border-2 disabled:border-[#4E4E4E] disabled:text-[#4E4E4E] disabled:bg-[#86D3F4];
+      disabled:border-2 disabled:border-neutral-500 disabled:text-neutral-500 disabled:bg-sky-300;
       height: 52px;
 
-      :focus-visible {
-        border: 2px solid red;
-      }
     }
 
     button[aria-label='стереть'] {
